@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Rotinas</title>
+    <link rel="stylesheet" href="Luma.css">
+</head>
+<body>
+
+    <div class="app-container">
+   
+        <header>
+            <div class="header-title">
+                <h1>Gerenciador de Rotinas</h1>
+                <p>Organize suas tarefas e gerencie seus prazos</p>
+            </div>
+            <div class="actions-top">
+                <button class="btn-secondary" id="btnNotif" onclick="solicitarPermissaoNotificacao()">🔔 Ativar Alertas (10d, 2d, 24h)</button>
+                <button class="btn-secondary" onclick="alternarTema()">🌙 Tema</button>
+            </div>
+        </header>
+
+        <div class="grid-layout">
+           
+            <div class="card">
+                <h2>✨ Nova Tarefa ou Rotina</h2>
+                <form id="taskForm" onsubmit="adicionarTarefa(event)">
+                    <div class="form-group">
+                        <label for="titulo">Título</label>
+                        <input type="text" id="titulo" required placeholder="Ex: Pagar contas, Consulta...">
+                    </div>
+                    <div class="form-group">
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria" required>
+                            <option value="">Selecione uma categoria</option>
+                            <option value="Trabalho">💼 Trabalho</option>
+                            <option value="Pessoal">👤 Pessoal</option>
+                            <option value="Estudo">📚 Estudo</option>
+                            <option value="Escola">🏫 Escola</option>
+                            <option value="Faculdade">🎓 Faculdade</option>
+                            <option value="Saúde">❤️ Saúde</option>
+                            <option value="Casa">🏠 Casa</option>
+                            <option value="Finanças">💰 Finanças</option>
+                            <option value="Mercado">🛒 Mercado</option>
+                            <option value="Compras">🛍️ Compras</option>
+                            <option value="Família">👨‍👩‍👧‍👦 Família</option>
+                            <option value="Amigos">👥 Amigos</option>
+                            <option value="Lazer">🎮 Lazer</option>
+                            <option value="Viagem">✈️ Viagem</option>
+                            <option value="Projetos">🧩 Projetos</option>
+                            <option value="Carro">🚗 Carro</option>
+                            <option value="Pets">🐾 Pets</option>
+                            <option value="Religião">⛪ Religião</option>
+                            <option value="Pagamento">💳 Pagamento</option>
+                            <option value="Outros">📌 Outros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dataLimite">Data</label>
+                        <input type="date" id="dataLimite" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="horaLimite">Hora (opcional)</label>
+                        <input type="time" id="horaLimite">
+                    </div>
+                    <button type="submit" class="btn-primary">Salvar Tarefa</button>
+                </form>
+            </div>
+
+            <div class="card category-spotlight">
+                <div class="avatar-scene" aria-live="polite">
+                    <div class="avatar-figure" aria-hidden="true">
+                        <span class="avatar-arm avatar-arm-left"></span>
+                        <span class="avatar-arm avatar-arm-right"></span>
+                        <span class="avatar-leg avatar-leg-left"></span>
+                        <span class="avatar-leg avatar-leg-right"></span>
+                        <div class="avatar-body"></div>
+                        <div class="avatar-head">
+                            <span class="avatar-hair"></span>
+                            <span class="avatar-eye"></span>
+                            <span class="avatar-eye"></span>
+                            <span class="avatar-mouth"></span>
+                        </div>
+                        <div class="avatar-badge" id="categoriaAvatar">📌</div>
+                    </div>
+                    <div class="floating-orb orb-one"></div>
+                    <div class="floating-orb orb-two"></div>
+                    <span class="preview-label" id="categoriaLabel">Selecione</span>
+                </div>
+            </div>
+
+            <div class="card full-width-card task-panel">
+                <h2>📋 Suas Tarefas e Rotinas Cadastradas</h2>
+                <div id="taskList" class="task-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="taskToast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="Luma.js"></script>
+</body>
+</html>
